@@ -1,0 +1,28 @@
+---
+interface Props {}
+
+// const { href, title, body } = Astro.props;
+import GridItem from "./GridItem.astro";
+---
+
+<script>
+  import { createSwapy } from "swapy";
+
+  const container = document.querySelector(".container");
+  const swapy = createSwapy(container, {
+    animation: "dynamic", // or spring or none
+  });
+
+  swapy.onSwap((event) => {
+    console.log(event.data.object);
+    console.log(event.data.array);
+    console.log(event.data.map);
+  });
+</script>
+
+<div class="container">
+  <GridItem id={1} name="test1" />
+  <GridItem id={1} name="test1" />
+  <GridItem id={1} name="test1" />
+  <GridItem id={1} name="test1" />
+</div>
