@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Grid from "../components/swapy/Grid.astro";
+import GridSlot from "../components/swapy/GridSlot.astro";
+import GridItem from "../components/swapy/GridItem.astro";
 ---
 
 <script>
@@ -56,21 +58,36 @@ import Card from "../components/Card.astro";
     </p>
 
     <div class="container grid grid-cols-4">
-      <div class="section-1 col-span-2" data-swapy-slot="foo">
+      <div class="col-span-2" data-swapy-slot="foo">
         <div class="content-a" data-swapy-item="a">SOME CONTENT 1</div>
       </div>
 
-      <div class="section-2" data-swapy-slot="bar">
+      <div data-swapy-slot="bar">
         <div class="content-b" data-swapy-item="b">
           SOME CONTENT 2
-          <div class="handle" data-swapy-handle></div>
+          <!-- <div class="handle" data-swapy-handle></div> -->
         </div>
       </div>
 
-      <div class="section-3" data-swapy-slot="baz">
+      <div data-swapy-slot="baz">
         <div class="content-c" data-swapy-item="c">SOME CONTENT 3</div>
       </div>
     </div>
+    <Grid>
+      <GridSlot width={3} height={2} name="1">
+        <GridItem name="a"> SOME CONTENT </GridItem>
+      </GridSlot>
+
+      <GridSlot name="2">
+        <GridItem name="b"> SOME CONTENT </GridItem>
+      </GridSlot>
+      <GridSlot name="3">
+        <GridItem name="c"> SOME CONTENT </GridItem>
+      </GridSlot>
+      <GridSlot name="4">
+        <GridItem name="d"> SOME CONTENT </GridItem>
+      </GridSlot>
+    </Grid>
   </main>
 </Layout>
 

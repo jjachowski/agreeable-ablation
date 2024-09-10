@@ -1,0 +1,28 @@
+---
+import { twMerge } from "tailwind-merge";
+
+type Props = {
+  name: string;
+  width?: number;
+  height?: number;
+  className?: string;
+};
+
+const { name, height = 1, width = 1, className } = Astro.props;
+---
+
+<div
+  class={twMerge(
+    "rounded-2xl bg-purple-500/30",
+    width && `col-span-${width}`,
+    className
+  )}
+  style={width
+    ? `grid-column: span ${width} / span ${width};`
+    : "" + height
+      ? `grid-row: span ${height} / span ${height};`
+      : ""}
+  data-swapy-slot={name}
+>
+  <slot />
+</div>

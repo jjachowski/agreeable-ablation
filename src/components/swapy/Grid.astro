@@ -1,0 +1,34 @@
+---
+import { twMerge } from "tailwind-merge";
+type Props = {
+  className?: string;
+  colSpan?: number;
+};
+
+const { className, colSpan } = Astro.props;
+---
+
+<script>
+  import { createSwapy } from "swapy";
+
+  const container = document.getElementById("swapy-container");
+  const swapy = createSwapy(container, {
+    animation: "dynamic", // or spring or none
+  });
+
+  swapy.onSwap((event) => {
+    console.log(event.data.object);
+    console.log(event.data.array);
+    console.log(event.data.map);
+  });
+</script>
+
+<div
+  id="swapy-container"
+  class={twMerge("grid gap-4 grid-cols-4", className)}
+  style={colSpan
+    ? `grid-template-columns: repeat(${colSpan}, minmax(0, 1fr));`
+    : undefined}
+>
+  <slot />
+</div>
